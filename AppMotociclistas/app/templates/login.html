@@ -1,0 +1,26 @@
+<div class="bar bar-header bar-light header-bar-shipper">
+  <a class="btn-back" href="#/inicio">
+    <img src="images/arrow-back.png" alt=""> <span>Inicio</span>
+  </a>
+  <h1>Iniciar Sesión</h1>
+  <a href="#"></a>
+</div>
+<div class="clearfix"></div>
+<ion-content id="iniciar_sesion" class="">
+  <img src="images/logo.png" alt="" id="logo">
+  <form class="css-form generic-form" name="loginForm" ng-controller="LoginCtrl" novalidate>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <input name="correo" type="email" placeholder="Email" ng-model="userMod.correo" ng-required="true">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <input name="contrasena" type="password" placeholder="Contraseña" ng-model="userMod.contrasena" placeholder="" ng-required="true">
+      </label>
+    </div>
+    <button ng-click="iniciarSesion(userMod, loginForm)" id="btn-blanco" class="button button-block button-positive bolder btn-azul-grande">
+      Iniciar Sesión
+    </button>
+    <br>
+    <a href="#/olvidoContrasena" class="centerBold">Olvidé mi Contraseña</a>
+  </form>
+</ion-content>

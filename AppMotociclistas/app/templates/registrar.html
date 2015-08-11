@@ -1,0 +1,34 @@
+<div class="bar bar-header bar-light header-bar-shipper">
+  <a class="btn-back" href="#/inicio">
+    <img src="images/arrow-back.png" alt=""> <span>Inicio</span>
+  </a>
+  <h1>Solicitud</h1>
+  <a href="#"></a>
+</div>
+<div class="clearfix"></div>
+<ion-content id="registrar" class="">
+  <img src="images/logo_simple.png" alt="" id="logo">
+  <p class="dark_center">Únete a nuestra Plataforma</p>
+  <p class="center_text">Llena el siguiente formulario,</p>
+  <p class="center_text">nuestro equipo se pondrá en contacto contigo.</p>
+  <br>
+  <form class="css-form generic-form" name="registerForm" ng-controller="RegistrarCtrl" novalidate>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <input name="nombre" type="text" placeholder="Nombre" ng-model="userMod.nombre" ng-required="true">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <input name="Apellido" type="text" placeholder="Apellido" ng-model="userMod.apellido" ng-required="true">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <input name="correo" type="email" placeholder="Email" ng-model="userMod.correo" ng-required="true">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <input name="telefono" type="number" placeholder="Teléfono" ng-model="userMod.telefono" placeholder="" ng-required="true" ng-minlength="6" ng-maxlength="10">
+      </label>
+    </div>
+    <button ng-click="registrar(userMod, registerForm)" id="btn-azul-grande" class="button button-block button-positive bolder btn-azul-grande">
+      Enviar Solicitud
+    </button>    
+  </form>
+</ion-content>
