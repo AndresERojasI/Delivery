@@ -137,6 +137,9 @@ form{
 		text-decoration: none;
 		display: inline-block;
 	}
+		.header-bar-shipper a img.btn_right{
+			margin-left: 47px;
+		}
 		.header-bar-shipper a img{
 			height: 90%;
 			margin-top: 5px;
@@ -244,6 +247,17 @@ form{
 	#registrar p{
 		margin-bottom: 2px;
 		color: #444444;
+	}
+
+/**
+ * Home
+ */
+#home{
+	margin-top: 59px;
+}
+
+	#home #mapa{
+		height: 100%;
 	}
 
 /**

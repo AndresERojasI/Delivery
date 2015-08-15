@@ -19,32 +19,48 @@ angular.module('shipper', ['ionic', 'shipper.controllers', 'shipper.services', '
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    //punto de inicio de la App
     .state('inicio', {
       url: '/inicio',
       templateUrl: 'templates/inicio.html',
       controller: 'InicioCtrl'
     })
+      //Solicitud de Registro
       .state('registrar', {
         url: '/registrar',
         templateUrl: 'templates/registrar.html',
         controller: 'RegistrarCtrl'
       })
+      //Inicio de Sesión
       .state('login', {
         url: '/login',
         templateUrl: 'templates/login.html',
         controller: 'RegistrarCtrl'
       })
+        //Recordar Contraseña
         .state('olvidoContrasena', {
           url: '/olvidoContrasena',
           templateUrl: 'templates/olvidoContrasena.html',
           controller: 'OlvidoContrasenaCtrl'
         })
-
+    //Home de la aplicación
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
       controller: 'HomeCtrl'
     })
+      //Historial de Pedidos
+      .state('historialPedidos', {
+        url: '/historialPedidos',
+        templateUrl: 'templates/historialPedidos.html',
+        controller: 'HistorialPedidosCtrl'
+      })
+      //Saldo disponible
+      .state('saldoDisponible', {
+        url: '/saldoDisponible',
+        templateUrl: 'templates/saldoDisponible.html',
+        controller: 'SaldoDisponibleCtrl'
+      })
     ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/inicio');

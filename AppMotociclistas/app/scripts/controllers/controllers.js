@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 		"esri/layers/graphics",
 		"esri/geometry/Point"
 	], function (Map, PictureMarkerSymbol,GraphicsLayer, Point) {
-		console.log($scope.map);
+
 		var map = new Map("mapDiv", {
 		  sliderOrientation : "horizontal",
 		  center: [-77.029, -12.018],
