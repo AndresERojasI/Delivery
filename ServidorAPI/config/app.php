@@ -27,8 +27,8 @@ return [
 	|
 	*/
 
-	'url' => 'http://clubrpm.pe',
-	'domain' => 'clubrpm.pe', 
+	'url' => 'http://e-cademy.in',
+	'domain' => 'e-cademy.in', 
 
 	/*
 	|--------------------------------------------------------------------------

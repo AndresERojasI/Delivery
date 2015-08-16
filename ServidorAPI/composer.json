@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.13",
+		"laravel/framework": "v5.0.13",
 		"jenssegers/mongodb": "^2.1",
 		"zizaco/entrust": "dev-laravel-5",
 		"kiwina/laravel5-menu": "dev-master",
