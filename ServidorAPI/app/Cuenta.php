@@ -2,17 +2,10 @@
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class TokenInstalacion extends \Moloquent {
+class Cuenta extends \Moloquent {
 
 	//Bloque de Use
 	use SoftDeletes;
-
-	/**
-	 * Llave primaria de la tabla
-	 * 
-	 * @var string
-	 */
-	protected $primaryKey = '_id';
 
 	/**
 	 * Arreglo de fechas para que sean manejadas
@@ -28,7 +21,15 @@ class TokenInstalacion extends \Moloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'TokenInstalacion';
+	protected $collection =  'cuentas';
+
+	/**
+	 * Nombre de la conexión, en caso que vayamos a tener 
+	 * varias BD
+	 * 
+	 * @var string
+	 */
+	protected $connection = 'mongodb';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -36,11 +37,12 @@ class TokenInstalacion extends \Moloquent {
 	 * @var array
 	 */
 	protected $fillable = [
-		'mac',
-		'token',
-		'estado',
-		'msgData',
-		'numero'
+		'saldo_actual',
+		'estado'
+	];
+
+	protected $guarded = [
+		'numero_unico'
 	];
 
 	/**
@@ -48,22 +50,30 @@ class TokenInstalacion extends \Moloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = [
-		
-	];
+	protected $hidden = [];
 
+	/**
+	 * Relaciones
+	 */
+	public function movimientos(){
+		return $this->hasMany('App\Movimiento');
+	}
 
 	/**
 	 * Validador
 	 */
 	private $errors;
-	private $rules = [];
+	private $rules = [
+		'saldo_actual' => 'requred|numeric',
+		'estado' => 'required|in:activo,suspendido,mora,cancelado',
+		'numero_unico' => 'required'
+	];
 	private $messages = [];
 
     public function validate($data)
     {
         // make a new validator object
-        $v = \Validator::make($data, $this->rules);
+        $v = \Validator::make($data, $this->rules, $this->messages);
 
         // check for failure
         if ($v->fails())
@@ -77,9 +87,22 @@ class TokenInstalacion extends \Moloquent {
         return true;
     }
 
-    public function errors()
+    public function errors()	
     {
         return $this->errors;
+    }
+
+    /**
+     * funciones de negocio
+     */
+    public function crearNumeroUnico(){
+    	$numero_unico = str_random(10);
+    	$busqueda = $this->where('numero_unico', '=', $numero_unico)-first();
+    	if (!is_null($busqueda)) {
+    		return $numero_unico;
+    	}else{
+    		$this->crearNumeroUnico();
+    	}
     }
 
 }

@@ -2,17 +2,10 @@
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class Numero extends \Moloquent {
+class Geoposicion extends \Moloquent {
 
 	//Bloque de Use
 	use SoftDeletes;
-
-	/**
-	 * Llave primaria de la tabla
-	 * 
-	 * @var string
-	 */
-	protected $primaryKey = '_id';
 
 	/**
 	 * Arreglo de fechas para que sean manejadas
@@ -28,7 +21,15 @@ class Numero extends \Moloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Numero';
+	protected $collection =  'geoposiciones';
+
+	/**
+	 * Nombre de la conexión, en caso que vayamos a tener 
+	 * varias BD
+	 * 
+	 * @var string
+	 */
+	protected $connection = 'mongodb';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -36,8 +37,8 @@ class Numero extends \Moloquent {
 	 * @var array
 	 */
 	protected $fillable = [
-		'numero',
-		'rpm',
+		'latitud',
+		'longitud'
 	];
 
 	/**
@@ -45,27 +46,19 @@ class Numero extends \Moloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = [
-		
-	];
-
-	/**
-	 * Rules set array
-	 * @var array
-	 */
-	protected $rules = array(
-
-	);
+	protected $hidden = [];
 
 	/**
 	 * Validador
 	 */
 	private $errors;
+	private $rules = [];
+	private $messages = [];
 
     public function validate($data)
     {
         // make a new validator object
-        $v = \Validator::make($data, $this->rules);
+        $v = \Validator::make($data, $this->rules, $this->messages);
 
         // check for failure
         if ($v->fails())
@@ -79,7 +72,7 @@ class Numero extends \Moloquent {
         return true;
     }
 
-    public function errors()
+    public function errors()	
     {
         return $this->errors;
     }

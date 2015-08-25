@@ -2,17 +2,10 @@
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class TokenInstalacion extends \Moloquent {
+class Producto extends \Moloquent {
 
 	//Bloque de Use
 	use SoftDeletes;
-
-	/**
-	 * Llave primaria de la tabla
-	 * 
-	 * @var string
-	 */
-	protected $primaryKey = '_id';
 
 	/**
 	 * Arreglo de fechas para que sean manejadas
@@ -28,7 +21,15 @@ class TokenInstalacion extends \Moloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'TokenInstalacion';
+	protected $collection =  'productos';
+
+	/**
+	 * Nombre de la conexión, en caso que vayamos a tener 
+	 * varias BD
+	 * 
+	 * @var string
+	 */
+	protected $connection = 'mongodb';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -36,11 +37,12 @@ class TokenInstalacion extends \Moloquent {
 	 * @var array
 	 */
 	protected $fillable = [
-		'mac',
-		'token',
-		'estado',
-		'msgData',
-		'numero'
+		'nombre',
+		'descripcion',
+		'nit',
+		'telefono',
+		'direccion',
+		'logo'
 	];
 
 	/**
@@ -48,10 +50,22 @@ class TokenInstalacion extends \Moloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = [
-		
-	];
+	protected $hidden = [];
 
+	/**
+	 * Relaciones
+	 */
+	public function menu(){
+		return $this->hasMany('App\Producto');
+	}
+
+	public function geoposicion(){
+		return $this->hasMany('App\Geoposicion');
+	}
+
+	public function sedes(){
+		return $this->hasMany('App\Comercio');
+	}
 
 	/**
 	 * Validador
@@ -63,7 +77,7 @@ class TokenInstalacion extends \Moloquent {
     public function validate($data)
     {
         // make a new validator object
-        $v = \Validator::make($data, $this->rules);
+        $v = \Validator::make($data, $this->rules, $this->messages);
 
         // check for failure
         if ($v->fails())
@@ -77,7 +91,7 @@ class TokenInstalacion extends \Moloquent {
         return true;
     }
 
-    public function errors()
+    public function errors()	
     {
         return $this->errors;
     }

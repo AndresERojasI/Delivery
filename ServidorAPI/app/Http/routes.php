@@ -20,17 +20,22 @@ Route::group(['domain' => $dominio], function()
 
 });
 
-Route::group(['domain' => 'apimoto.'.$dominio], function()
+/**
+ * Rutas de las distintas APIs
+ */
+
+//Api para motociclistas
+Route::group(['domain' => 'api.'.$dominio], function()
 {
 	/**
-	 * Punto Inicio
+	 * Punto Inicio - Solo información
 	 */
     Route::get('/', function (){
 		return \Response::json(array('version' => '1.0', 'mensaje' => 'Bienvenido a la API de Shipper.'));
 	});
 
 
-    Route::post('/loginCorreo', function (){
+    Route::post('/login', function (){
 		// create our user data for the authentication
 		$email    = \Request::input('correo');
 		$password = \Request::input('contrasena');

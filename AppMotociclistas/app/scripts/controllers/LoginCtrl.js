@@ -2,7 +2,7 @@
 
 angular.module('shipper.controllers')
 
-.controller('LoginCtrl', ['$scope', '$ionicLoading', 'UsuarioModel', '$ionicPopup', function($scope, $ionicLoading, UsuarioModel, $ionicPopup){
+.controller('LoginCtrl', ['$scope', '$ionicLoading', 'UsuarioModel', '$ionicPopup', '$location', function($scope, $ionicLoading, UsuarioModel, $ionicPopup, $location){
 	//Model de usuario para las validaciones
 	$scope.userMod = {};
 

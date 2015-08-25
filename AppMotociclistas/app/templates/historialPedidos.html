@@ -1,0 +1,60 @@
+<div class="bar bar-header bar-light header-bar-shipper">
+    <a class="btn-back" href="#">
+    </a>
+    <h1>Historial de Pedidos</h1>
+    <a href="#/home">
+    	<span>Inicio</span> <img src="images/arrow-forward.png" alt="" class="btn_right"> 
+    </a>
+</div>
+<ion-content id="historialPedidos" class="">
+    <div id="dateSelector">
+    	<p>Selecciona la fecha del historial:</p>
+        <form>
+            <label class="item item-input item-stacked-label">
+                <input id="year" name="ano" type="text" placeholder="Año">
+            </label>
+            <label class="item item-input item-stacked-label">
+                <input id="month" type="text" name="mes" placeholder="Mes">
+            </label>
+            <input type="button" value="Ir">
+        </form>        
+    </div>
+
+    <ion-list ng-controller="MyCtrl" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+        <ion-item ng-repeat="item in items" class="item-thumbnail-left">
+            <img ng-src="{{item.img}}">
+            <h2>{{item.title}}</h2>
+            <p>{{item.description}}</p>
+
+            <ion-option-button class="button-positive" ng-click="share(item)">
+                Share
+            </ion-option-button>
+            <ion-option-button class="button-info" ng-click="edit(item)">
+                Edit
+            </ion-option-button>
+
+            <ion-delete-button class="ion-minus-circled" ng-click="items.splice($index, 1)"></ion-delete-button>
+            <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<script>
+jQuery(document).ready(function() {
+    jQuery('#year')
+        .dateDropper({
+            format: "Y",
+            lang: 'es',
+            color: "#074B69",
+            animation: "dropdown",
+            minYear: 2015
+        });
+    jQuery('#month')
+        .dateDropper({
+            format: "m",
+            lang: 'es',
+            color: "#074B69",
+            animation: "dropdown",
+            minYear: 2015
+        });
+});
+</script>

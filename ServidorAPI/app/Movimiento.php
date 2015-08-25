@@ -2,17 +2,10 @@
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class TokenInstalacion extends \Moloquent {
+class Movimiento extends \Moloquent {
 
 	//Bloque de Use
 	use SoftDeletes;
-
-	/**
-	 * Llave primaria de la tabla
-	 * 
-	 * @var string
-	 */
-	protected $primaryKey = '_id';
 
 	/**
 	 * Arreglo de fechas para que sean manejadas
@@ -21,14 +14,22 @@ class TokenInstalacion extends \Moloquent {
 	 * 
 	 * @var array[string]
 	 */
-	protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at', 'fecha_movimiento'];
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'TokenInstalacion';
+	protected $collection =  'movimientos';
+
+	/**
+	 * Nombre de la conexión, en caso que vayamos a tener 
+	 * varias BD
+	 * 
+	 * @var string
+	 */
+	protected $connection = 'mongodb';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -36,11 +37,8 @@ class TokenInstalacion extends \Moloquent {
 	 * @var array
 	 */
 	protected $fillable = [
-		'mac',
-		'token',
-		'estado',
-		'msgData',
-		'numero'
+		'transaccion',
+		'monto'
 	];
 
 	/**
@@ -48,22 +46,22 @@ class TokenInstalacion extends \Moloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = [
-		
-	];
-
+	protected $hidden = [];
 
 	/**
 	 * Validador
 	 */
 	private $errors;
-	private $rules = [];
+	private $rules = [
+		'transaccion' => 'required|in:credito,debito,ajuste',
+		'monto' => 'required|numeric'
+	];
 	private $messages = [];
 
     public function validate($data)
     {
         // make a new validator object
-        $v = \Validator::make($data, $this->rules);
+        $v = \Validator::make($data, $this->rules, $this->messages);
 
         // check for failure
         if ($v->fails())
@@ -77,7 +75,7 @@ class TokenInstalacion extends \Moloquent {
         return true;
     }
 
-    public function errors()
+    public function errors()	
     {
         return $this->errors;
     }

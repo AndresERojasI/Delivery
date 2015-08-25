@@ -20,7 +20,7 @@ class VerifyCsrfToken extends BaseVerifier {
 		$subdominio = explode('.', $subdominio);
 		$subdominio = $subdominio['0'];
 
-		if ($subdominio === "api") { 
+		if ($subdominio === "api") {
 			return $next($request);
 		}
 		return parent::handle($request, $next);

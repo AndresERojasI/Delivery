@@ -8,5 +8,18 @@
   </a>
 </div>
 <ion-content id="home" class="">
-	<div id="mapa"></div>
+	<div id="mapa">
+		<div class="btn_estado" ng-class="{not_available: !estoyDisponible}">
+			<span>
+				{{ msjDisponibilidad }}
+			</span>			
+			<label class="toggle toggle-balanced">
+				<input type="checkbox" ng-change="cambiarEstado()" checked="checked" ng-model="estoyDisponible" ng-checked="estoyDisponible">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
+		</div>
+		<div class="center_map" ng-click="centrarPosActual()"></div>
+	</div>
 </ion-content>

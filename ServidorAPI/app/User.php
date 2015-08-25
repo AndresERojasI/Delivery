@@ -28,7 +28,7 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
 	 * 
 	 * @var array[string]
 	 */
-	protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at', 'last_login'];
 
 	/**
 	 * The database table used by the model.
@@ -43,19 +43,23 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
 	 * @var array
 	 */
 	protected $fillable = [
-	      'nombres',
-	      'apellidos',
-	      'correo',
-	      'celular',
-	      'avatar_principal',
-	      'contrasena',
-	      'pais',
-	      'puntos',
-	      'configuracion',
-	      'contactos',
-	      'sincronizado',
-	      'foto_publica',
-	      'vehiculo'
+		//Datos personales
+		'nombres',
+		'apellidos',
+		'celular',
+		'avatar',
+		'pais',
+		'ciudad',
+		'direccion',
+		//datos autenticación
+		'correo',
+		'contrasena',
+		'tipo_usuario',
+		'fb_id',
+		'tw_id',
+		'estado',
+		//Datos Gamification
+		'puntos'
     ];
 
 	/**
@@ -63,13 +67,54 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
 	 *
 	 * @var array
 	 */
-	protected $hidden = [];
+	protected $hidden = [
+		'contrasena'
+	];
+
+	/**
+	 * Relaciones
+	 */
+	public function badges(){
+		return $this->hasMany('App\Badges');
+	}
+
+	public function vehiculo(){
+		return $this->hasOne('App\Vehiculo');
+	}
+
+	public function configuracion(){
+		return $this->hasOne('App\Configuracion');
+	}
+
+	public function geoposicion(){
+		return $this->hasOne('App\Geoposicion');
+	}
+
+	public function geoposicion(){
+		return $this->hasOne('App\Cuenta');
+	}
 
 	/**
 	 * Validador
 	 */
 	private $errors;
-	private $rules = [];
+	private $rules = [
+		//Datos personales
+		'nombres' =>  'required|min:2|max:80|alpha_num',
+		'apellidos' => 'required|min:2|max:80|alpha_num',
+		'celular' => 'required|size:10|integer|unique:users,celular',
+		'pais' => 'required',
+		'ciudad'  => 'required',
+		'direccion'  => 'required',
+		//datos autenticación
+		'correo'  => 'required|email|unique:users,correo',
+		'contrasena' => 'required|min:8|max:64',
+		'tipo_usuario' => 'required|in:admin,delivery,user,comercio',
+		'estado' => 'required|in:pendiente,activo,suspendido,retirado',
+		//Datos Gamification
+		'puntos'  => 'required|integer'
+	];
+	private $messages = [];
 
     public function validate($data)
     {
@@ -96,24 +141,5 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
     public function getAuthIdentifier()
 	{
 	    return $this->_id;
-	}
-
-	public function contactosRel(){
-		return  $this->hasMany('\App\User');
-	}
-
-	public static function limpiarTelefono($celular){
-		if (strlen($celular) >= 10) {
-			$celular = filter_var($celular, FILTER_SANITIZE_NUMBER_INT);
-			$celular = str_replace(array('+', '-', ' '), array('','',''), $celular);
-			if (strlen($celular) >= 10) {
-				$celular = substr($celular, -10);
-				return $celular;
-			}else{
-				return $celular;
-			}
-		}else{
-			return $celular;
-		}
 	}
 }

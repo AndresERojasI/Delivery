@@ -27,4 +27,34 @@ angular.module('shipper.controllers')
 			});
 		}
 	);
+
+	$scope.centrarPosActual = function(){
+		$ionicLoading.show({
+	      template: 'Localizándote...'
+	    });
+		Map.centrarPosActual().then(
+			function(result){
+				$ionicLoading.hide();
+			},
+			function(error){
+				$ionicLoading.hide();
+				$ionicPopup.alert({
+					title: 'Error al ubicarte en el mapa',
+					template: '<span style="color:#000;">Ha ocurido un error al intentar ubicarte en el mapa, verifica que el GPS esté activado.<span>'
+				});
+			}
+		);
+	};
+
+	$scope.estoyDisponible = true;
+	$scope.msjDisponibilidad = "Estoy Disponible";
+	$scope.cambiarEstado = function(){
+		$scope.estoyDisponible = !$scope.estoyDisponible;
+		if ($scope.estoyDisponible) {
+			$scope.msjDisponibilidad = "Estoy Disponible";
+		}else{
+			$scope.msjDisponibilidad = "No Disponible";
+		}
+	}
+
 }]);
