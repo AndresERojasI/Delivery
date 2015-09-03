@@ -32,16 +32,21 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+		
+
 		if ($this->auth->guest())
 		{
-			if ($request->ajax())
-			{
-				return response('Unauthorized.', 401);
+			$uri_segments = $request->segments();
+			$subdominio = $request->root();
+			$subdominio = str_replace('http://', '', $subdominio);
+			$subdominio = explode('.', $subdominio);
+			$subdominio = $subdominio['0'];
+
+			if ($subdominio === "api") {
+				return \Response::json(array('success' => false, 'message' => 'No se ha podido iniciar sesión'));
 			}
-			else
-			{
-				return redirect()->guest('auth/login');
-			}
+			
+			return redirect()->guest('auth/login');
 		}
 
 		return $next($request);

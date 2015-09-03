@@ -6,18 +6,18 @@
 |--------------------------------------------------------------------------
 */
 
-$dominio = Config::get('app.domain');
+//Constantes
+define('DOMINIO', Config::get('app.domain'));
+define('VERSION_API', "v".Config::get('app.api_version'));
 
 /**
  * URLs de la página
  */
-Route::group(['domain' => $dominio], function()
+Route::group(['domain' => DOMINIO], function()
 {
-
     Route::get('/', function (){
 		return \Response::json(array('version' => '1.0', 'mensaje' => 'Pronto tendremos una pagina lista...'));
 	});
-
 });
 
 /**
@@ -25,104 +25,75 @@ Route::group(['domain' => $dominio], function()
  */
 
 //Api para motociclistas
-Route::group(['domain' => 'api.'.$dominio], function()
+Route::group(['domain' => 'api.'.DOMINIO], function()
 {
-	/**
-	 * Punto Inicio - Solo información
-	 */
-    Route::get('/', function (){
-		return \Response::json(array('version' => '1.0', 'mensaje' => 'Bienvenido a la API de Shipper.'));
-	});
+	//Se asigna el prefijo de la URI para mostrar la version de la API
+	Route::group(['prefix' => "/".VERSION_API ], function()
+	{
+		//Punto Inicio - Solo información
+	    Route::get('/', function (){
+			return \Response::json(array('version' => VERSION_API, 'mensaje' => 'Bienvenido a la API de Shipper.'));
+		});
 
-
-    Route::post('/login', function (){
-		// create our user data for the authentication
-		$email    = \Request::input('correo');
-		$password = \Request::input('contrasena');
-		$usuario = \App\User::where('correo', '=', $email)->first();
-	    // attempt to do the login
-	    // attempt(array $credentials = array(), bool $remember = false, bool $login = true)
-		if ($usuario->contrasena === $password) {
-			$return = \Request::input('return');
-			if (isset($return) && !empty($return) && !is_null($return)) {
-				return \Response::json(array('success' => true, 'message' => 'Bienvenido a la aplicación', 'user' => $usuario));
-			}else{
-				return \Response::json(array('success' => true, 'message' => 'Bienvenido a la aplicación'));
-			}
-		}else{
-			return \Response::json(array('success' => false, 'message' => 'No se ha podido iniciar sesión'));
-		}
-
-	});
-
-	Route::post('/buscarUsuario', function (){
-		// create our user data for the authentication
-		$email = \Request::input('correo');
-		$usuario = \App\User::where('correo', '=', $email)->first();
-
-		if (!is_null($usuario)) {
-			return \Response::json(array('success' => true, 'usuario' => $usuario));
-		}else{
-			return \Response::json(array('success' => false));
-		}
-
-	});
-
-	Route::post('/buscarUsuarioID', function (){
-		// create our user data for the authentication
-		$id = \Request::input('id');
-		$usuario = \App\User::where('_id', '=', $id)->first();
-
-		if (!is_null($usuario)) {
-			return \Response::json(array('success' => true, 'usuario' => $usuario));
-		}else{
-			return \Response::json(array('success' => false));
-		}
-
-	});
-
-	Route::post('/registrarUsuario', function (){
-		$data = \Request::all();
-		$usuario = \App\User::where('correo', '=', $data['correo'])->first();
-		if (is_null($usuario)) {
-
-			$usuario = new \App\User($data);
-					
-			if ($usuario->validate($data)) {
-				$usuario->contrasena = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),0, 1) . substr(str_shuffle('aBcEeFgHiJkLmNoPqRstUvWxYz0123456789'),0, 8);
-				$usuario->save();
-				$resultado = Mail::send('emails.register', ['usuario' => $usuario->correo, 'contrasena' => $usuario->contrasena], function($message) use( &$usuario)
-				{
-					$message->from('andres.rojas@solidoic.in', 'Shipper Admin');
-				    $message->to($usuario->correo, $usuario->nombres)->subject('Bienvenido a Shipper');
-				});
-
-				return \Response::json(array('success' => true, 'id' => $usuario->_id, 'usuario' => $usuario, 'resultado' => $resultado));
-			}else{
-				return \Response::json(array('success' => false));
-			}
-		}else{
-			return \Response::json(array('success' => false, 'existe' => true));
-		}
-			
-	});
-
-	Route::post('/actualizarUsuario', function (){
-		$data = \Request::all();
+	    
 		
-		$usuario = \App\User::where('_id', '=', $data['_id'])->first();
-		if (!is_null($usuario)) {
-			if ($usuario->validate($data)) {
+	    Route::group(['prefix' => "auth" ], function()
+		{
+			//Obtener un token de acceso
+			Route::post('/access_token', function() {
+			    return Response::json(Authorizer::issueAccessToken());
+			});
+		});
 
-				$usuario->update($data);
-				return \Response::json(array('success' => true, 'id' => $usuario->_id, 'usuario' => $usuario));
-			}else{
-				return \Response::json(array('success' => false));
-			}
-		}else{
-			return \Response::json(array('success' => false, 'existe' => true));
-		}
+	    //rutas de usuarios
+	    Route::group(['prefix' => "usuarios", 'middleware' => 'oauth-user'], function()
+		{
+			//Verbos del CRUD de Usuarios
+			Route::get('/', ['uses' => 'UsuarioController@listar']); //Listar usuarios
+			Route::get('/{campo}/{valor}', ['uses' => 'UsuarioController@buscar']); //Listar usuarios
+			Route::post('/', ['uses' => 'UsuarioController@crear']); //Crear Usuario
+			Route::put('/{id}', ['uses' => 'UsuarioController@actualizar']); //Actualizar Usuario
+			Route::delete('/{id}', ['uses' => 'UsuarioController@eliminar']); //Eliminar Usuario
+
+			//Endpoints para los motociclistas
+		    Route::group(['prefix' => "motociclistas" ], function()
+			{
+				Route::get('/', ['uses' => 'UsuarioController@listarDelivery']); //Listar a todos los motociclistas
+				Route::get('/cercanos', ['uses' => 'UsuarioController@listarDeliveryCercanos']); //Listar a todos los motociclistas cercanos
+			});
+
+		});
+
+		//rutas de comercios
+	    Route::group(['prefix' => "comercios", 'middleware' => 'oauth-user'], function()
+		{
+			//Verbos del CRUD de Comercios
+			Route::get('/{id}', ['uses' => 'ComercioController@listar']); //Listar comercios
+			Route::get('/{campo}/{valor}', ['uses' => 'ComercioController@buscar']); //Listar usuarios
+			Route::post('/', ['uses' => 'ComercioController@crear']); //Crear Comercio
+			Route::put('/{id}', ['uses' => 'ComercioController@actualizar']); //Actualizar Comercio
+			Route::delete('/{id}', ['uses' => 'ComercioController@eliminar']); //Eliminar Comercio
+
+
+			//Rutas de Productos
+			Route::group(['prefix' => "{id}/productos"], function()
+			{
+				//Verbos del CRUD de Productos
+				Route::get('/{id}', ['uses' => 'ProductoController@listar']); //Listar producto
+				Route::get('/{campo}/{valor}', ['uses' => 'ProductoController@buscar']); //Listar producto
+				Route::post('/', ['uses' => 'ProductoController@crear']); //Crear Producto
+				Route::put('/{id}', ['uses' => 'ProductoController@actualizar']); //Actualizar Producto
+				Route::delete('/{id}', ['uses' => 'ProductoController@eliminar']); //Eliminar Producto
+			});
 			
+			//Rutas de Pedidos
+			Route::group(['prefix' => "{id}/pedidos"], function()
+			{
+				Route::post('/{comercio}', ['uses' => 'PedidoController@solicitarPedido']);//Solicitar un Pedido
+				Route::delete('/{idPedido}', ['uses' => 'PedidoController@cancelarPedido']);//Cancelar un Pedido
+			});
+		});
+			   
 	});
 
 });

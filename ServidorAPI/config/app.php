@@ -138,6 +138,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 		/**
 		 * Custom providers
@@ -146,8 +147,9 @@ return [
 		'Jenssegers\Mongodb\Auth\PasswordResetServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Jenssegers\Mongodb\Session\SessionServiceProvider',
-		'Kiwina\Menu\ServiceProvider',
 		'Vinelab\Http\HttpServiceProvider',
+		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
+		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -206,8 +208,9 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Moloquent' => 'Jenssegers\Mongodb\Model',
 		'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
-		'Menu'       => 'Kiwina\Menu\Facade',
-		'MyHttp' => 'Vinelab\Http\Facades\Client',
+		'Menu'      => 'Kiwina\Menu\Facade',
+		'MyHttp'    => 'Vinelab\Http\Facades\Client',
+		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\Authorizer'
 	],
 
 ];

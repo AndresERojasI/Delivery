@@ -90,7 +90,7 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
 		return $this->hasOne('App\Geoposicion');
 	}
 
-	public function geoposicion(){
+	public function cuenta(){
 		return $this->hasOne('App\Cuenta');
 	}
 
@@ -140,6 +140,16 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
 
     public function getAuthIdentifier()
 	{
-	    return $this->_id;
+	    return $this->correo;
+	}
+
+	/**
+	 * Get the password for the user.
+	 *
+	 * @return string
+	 */
+	public function getAuthPassword()
+	{
+	    return $this->contrasena;
 	}
 }

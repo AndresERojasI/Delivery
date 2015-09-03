@@ -59,9 +59,10 @@ return [
 	*/
 
 	'password' => [
-		'email' => 'emails.password',
+		'correo' => 'correo.contrasena',
 		'table' => 'password_resets',
-		'expire' => 60,
+		'expire' => 60, 
 	],
+	'username' => 'correo'
 
 ];
