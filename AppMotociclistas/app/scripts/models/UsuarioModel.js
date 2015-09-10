@@ -84,7 +84,7 @@ angular.module('shipper.models')
 	    };
 
 		//Funciones de autenticación
-		Modelo.isLogged = function(Database){
+		Modelo.isLogged = function(Database, checkString){
 			try{
 				var sqlConsulta = 'SELECT * FROM usuarioLogueado;';
 				return new Promise(function(fulfill, reject){
@@ -92,8 +92,26 @@ angular.module('shipper.models')
 					function(result){
 						if (result.rows.length > 0) {
 							var id_usuario = result.rows.item(0).idUsuario;
+							
 							Modelo.buscar('_id', id_usuario).then(
 							function(resultado){
+								var usuario = resultado.rows.item(0);
+								API.Autenticar.save(
+									{
+										client_id: API.ClientID,
+										client_secret: API.ClientSecret,
+										state_param: checkString,
+										grant_type: 'password',
+										password: usuario.contrasena,
+										username: usuario.contrasena
+									},
+									function(result){
+										console.log(result);
+									},
+									function(error){
+										console.log(error);
+									}
+					          	);
 								//buscamos las actualizaciones
 								//TODO: Lógica de Actualizaciones
 								//Actualizamos los datos en la web del Usuario
