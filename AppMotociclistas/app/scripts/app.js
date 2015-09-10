@@ -69,7 +69,7 @@ angular.module('shipper', ['ionic', 'shipper.controllers', 'shipper.services', '
 //Inicializamos el módulo de servicios
 angular.module('shipper.services', ['ngResource', 'ionic']);
 //Inicializamos el módulo de Controladores
-angular.module('shipper.controllers', ['ionic', 'angular-flexslider']);
+angular.module('shipper.controllers', ['ionic', 'angular-flexslider', 'angularRandomString']);
 //Inicializamos el módulo de modelos
 angular.module('shipper.models', ['ionic']);
 //Inicializamos el módulo de Directivas

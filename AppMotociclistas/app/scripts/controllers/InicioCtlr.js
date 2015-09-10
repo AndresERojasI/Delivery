@@ -2,7 +2,7 @@
 
 angular.module('shipper.controllers')
 
-.controller('InicioCtrl', ['$scope', '$location', '$ionicPopup', 'UsuarioModel', 'Database', 'API', 'AuthService', function ($scope, $location, $ionicPopup, UsuarioModel, Database, API, AuthService){
+.controller('InicioCtrl', ['$scope', '$location', '$ionicPopup', 'UsuarioModel', 'Database', 'API', 'AuthService', 'randomString', function ($scope, $location, $ionicPopup, UsuarioModel, Database, API, AuthService, randomString){
 	$scope.mySlides = [
 		'images/slide1.png',
 		'images/slide2.png',
@@ -10,11 +10,11 @@ angular.module('shipper.controllers')
 	];
 
 	$scope.isLogged = true;
-
+	var checkString = randomString(32);
 	//definimos el Servicio de usuario de forma global
-	UsuarioModel.init(Database, API, AuthService).then(
+	UsuarioModel.init(Database, API, AuthService, ).then(
 		function(resultado){
-			UsuarioModel.isLogged(Database).then(
+			UsuarioModel.isLogged(Database, checkString).then(
 				function(respuesta){
 					$location.path( "/home" );
 					if(!$scope.$$phase) $scope.$apply();

@@ -150,7 +150,7 @@ class UsuarioController extends Controller {
 	 */
 	public function actualizar(Request $request, $id){
 		$data = $request->all();
-		$usuario = new \App\User::find($id);
+		$usuario = \App\User::find($id);
 				
 		if ($usuario->validate($data)) {
 			$usuario->update($data);
