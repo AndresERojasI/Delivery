@@ -88,6 +88,7 @@ angular.module('shipper.models')
 			try{
 				var sqlConsulta = 'SELECT * FROM usuarioLogueado;';
 				return new Promise(function(fulfill, reject){
+					fulfill(true);//TODO: remover esto
 					Database.ejecutarSQL(sqlConsulta, []).then(
 					function(result){
 						if (result.rows.length > 0) {
@@ -96,48 +97,51 @@ angular.module('shipper.models')
 							Modelo.buscar('_id', id_usuario).then(
 							function(resultado){
 								var usuario = resultado.rows.item(0);
-								API.Autenticar.save(
+								API.Autenticar().save(
 									{
 										client_id: API.ClientID,
 										client_secret: API.ClientSecret,
 										state_param: checkString,
 										grant_type: 'password',
 										password: usuario.contrasena,
-										username: usuario.contrasena
+										username: usuario.correo
 									},
 									function(result){
 										console.log(result);
+										//buscamos las actualizaciones
+										//TODO: Lógica de Actualizaciones
+										//Actualizamos los datos en la web del Usuario
+										if (resultado.rows.length > 0) {
+											Modelo.cargarSesion(resultado.rows.item(0));                   
+										};
+
+										/**API.BuscarUsuarioID.save(
+											{id: id_usuario},
+											function(resultado){
+												if (resultado.success === true) {
+													Modelo.cargarSesion(resultado.usuario);
+													Modelo.crearLocal(resultado.usuario);
+													Modelo.autenticar(resultado.usuario._id);
+													fulfill(true);
+												}else{
+													Modelo.descargarSesion();
+													var sqlConsulta = 'DELETE FROM usuario WHERE _id = "'+id_usuario+'";';
+													Database.ejecutarSQL(sqlConsulta, []);
+													reject(false);
+												}
+											},
+											function(error){
+												fulfill(true);                
+											}
+										);**/
+										fulfill(true); 
 									},
 									function(error){
 										console.log(error);
+										reject(false);
 									}
 					          	);
-								//buscamos las actualizaciones
-								//TODO: Lógica de Actualizaciones
-								//Actualizamos los datos en la web del Usuario
-								if (resultado.rows.length > 0) {
-									Modelo.cargarSesion(resultado.rows.item(0));                   
-								};
-
-								API.BuscarUsuarioID.save(
-									{id: id_usuario},
-									function(resultado){
-										if (resultado.success === true) {
-											Modelo.cargarSesion(resultado.usuario);
-											Modelo.crearLocal(resultado.usuario);
-											Modelo.autenticar(resultado.usuario._id);
-											fulfill(true);
-										}else{
-											Modelo.descargarSesion();
-											var sqlConsulta = 'DELETE FROM usuario WHERE _id = "'+id_usuario+'";';
-											Database.ejecutarSQL(sqlConsulta, []);
-											reject(false);
-										}
-									},
-									function(error){
-										fulfill(true);                
-									}
-								);
+								
 
 							},
 							function(err){

@@ -37,10 +37,12 @@ Route::group(['domain' => 'api.'.DOMINIO], function () {
             Route::post('/access_token', function () {
                 return Response::json(Authorizer::issueAccessToken());
             });
+
+            Route::post('/login', ['uses' => 'AutenticacionController@login']); //Crear Usuario
         });
 
         //rutas de usuarios
-        Route::group(['prefix' => 'usuarios', 'middleware' => 'oauth-user'], function () {
+        Route::group(['prefix' => 'usuarios'], function () {
             //Verbos del CRUD de Usuarios
             Route::get('/', ['uses' => 'UsuarioController@listar']); //Listar usuarios
             Route::get('/{campo}/{valor}', ['uses' => 'UsuarioController@buscar']); //Listar usuarios
@@ -51,7 +53,7 @@ Route::group(['domain' => 'api.'.DOMINIO], function () {
             //Endpoints para los motociclistas
             Route::group(['prefix' => 'motociclistas'], function () {
                 Route::get('/', ['uses' => 'UsuarioController@listarDelivery']); //Listar a todos los motociclistas
-                Route::get('/cercanos', ['uses' => 'UsuarioController@listarDeliveryCercanos']); //Listar a todos los motociclistas cercanos
+                Route::get('/cercanos', ['uses' => 'UsuarioController@listarDeliveryCercanos']);//Listar a todos los motociclistas cercanos
             });
 
         });

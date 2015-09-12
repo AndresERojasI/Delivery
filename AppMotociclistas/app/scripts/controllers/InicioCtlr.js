@@ -11,24 +11,23 @@ angular.module('shipper.controllers')
 
 	$scope.isLogged = true;
 	var checkString = randomString(32);
-	//definimos el Servicio de usuario de forma global
-	UsuarioModel.init(Database, API, AuthService, ).then(
+	UsuarioModel.init(Database, API, AuthService ).then(
 		function(resultado){
 			UsuarioModel.isLogged(Database, checkString).then(
 				function(respuesta){
-					$location.path( "/home" );
-					if(!$scope.$$phase) $scope.$apply();
+					$location.path( '/app/home' );
+					if(!$scope.$$phase) {$scope.$apply();}
 				},
 				function(error){
 					$scope.isLogged = false;
-					if(!$scope.$$phase) $scope.$apply();
+					if(!$scope.$$phase) {$scope.$apply();}
 				}
 			);
 		},
 		function(error){
 			console.log(error);
 			$scope.isLogged = false;
-			if(!$scope.$$phase) $scope.$apply();
+			if(!$scope.$$phase) {$scope.$apply();}
 			$ionicPopup.alert({
               title: 'Ha ocurrido un error',
               template: 'Ha ocurrido un error al inicar la aplicación, por favor reinicia la aplicación. El administrado ha sido notificado.'

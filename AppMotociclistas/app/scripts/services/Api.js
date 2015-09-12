@@ -11,6 +11,9 @@ angular.module('shipper.services')
   	Autenticar: function(){
   		return $resource(apiEndpoint + 'auth/access_token');
   	},
+    Login: function(){
+      return $resource(apiEndpoint + 'auth/login');
+    },
   	BuscarUsuarioID: $resource(apiEndpoint + 'buscarUsuarioID'),
   	RegistrarUsuario: $resource(apiEndpoint + 'registrarUsuario'),
   	ActualizarUsuario: $resource(apiEndpoint + 'actualizarUsuario')

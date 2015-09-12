@@ -43,23 +43,41 @@ angular.module('shipper', ['ionic', 'shipper.controllers', 'shipper.services', '
           templateUrl: 'templates/olvidoContrasena.html',
           controller: 'OlvidoContrasenaCtrl'
         })
+    .state('app', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'MenuCtrl'
+    })
     //Home de la aplicación
-    .state('home', {
+    .state('app.home', {
       url: '/home',
-      templateUrl: 'templates/home.html',
-      controller: 'HomeCtrl'
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
     })
       //Historial de Pedidos
-      .state('historialPedidos', {
+      .state('app.historialPedidos', {
         url: '/historialPedidos',
-        templateUrl: 'templates/historialPedidos.html',
-        controller: 'HistorialPedidosCtrl'
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/historialPedidos.html',
+            controller: 'HistorialPedidosCtrl'
+          }
+        }        
       })
       //Saldo disponible
-      .state('saldoDisponible', {
+      .state('app.saldoDisponible', {
         url: '/saldoDisponible',
-        templateUrl: 'templates/saldoDisponible.html',
-        controller: 'SaldoDisponibleCtrl'
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/saldoDisponible.html',
+            controller: 'SaldoDisponibleCtrl'
+          }
+        }
       })
     ;
   // if none of the above states are matched, use this as the fallback

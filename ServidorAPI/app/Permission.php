@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace Shipper;
 
 use Zizaco\Entrust\EntrustPermission;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;

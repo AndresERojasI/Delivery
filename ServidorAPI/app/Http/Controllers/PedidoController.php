@@ -1,19 +1,14 @@
-<?php 
+<?php
+
 
 /**
  * Esta clase representa la lógica de controladores para las
- * funcionalidades de los Pedidos
+ * funcionalidades de los Pedidos.
  */
+namespace Shipper\Http\Controllers;
 
-namespace App\Http\Controllers;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-
-class PedidoController extends Controller {
-
-	
-
+class PedidoController extends Controller
+{
 }

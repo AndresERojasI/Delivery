@@ -30,9 +30,9 @@ return [
     'grant_types' => [
         'password' => [
             'class' => '\League\OAuth2\Server\Grant\PasswordGrant',
-            'callback' => 'App\Http\Controllers\AutenticacionController@login',
-            'access_token_ttl' => 86400
-        ]
+            'callback' => 'Shipper\Http\Controllers\AutenticacionController@authApi',
+            'access_token_ttl' => 86400,
+        ],
     ],
 
     /*

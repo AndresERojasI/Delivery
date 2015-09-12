@@ -1,74 +1,77 @@
-<?php namespace App;
+<?php
+
+namespace Shipper;
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
-class Cuenta extends \Moloquent {
+class Cuenta extends \Moloquent
+{
+    //Bloque de Use
+    use SoftDeletes;
 
-	//Bloque de Use
-	use SoftDeletes;
+    /**
+     * Arreglo de fechas para que sean manejadas
+     * como un tipo de fecha válido para Mongo
+     * Carbon/DateTime.
+     *
+     * @var array[string]
+     */
+    protected $dates = ['deleted_at'];
 
-	/**
-	 * Arreglo de fechas para que sean manejadas
-	 * como un tipo de fecha válido para Mongo
-	 * Carbon/DateTime
-	 * 
-	 * @var array[string]
-	 */
-	protected $dates = ['deleted_at'];
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $collection = 'cuentas';
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $collection =  'cuentas';
+    /**
+     * Nombre de la conexión, en caso que vayamos a tener 
+     * varias BD.
+     * 
+     * @var string
+     */
+    protected $connection = 'mongodb';
 
-	/**
-	 * Nombre de la conexión, en caso que vayamos a tener 
-	 * varias BD
-	 * 
-	 * @var string
-	 */
-	protected $connection = 'mongodb';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'saldo_actual',
+        'estado',
+    ];
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = [
-		'saldo_actual',
-		'estado'
-	];
+    protected $guarded = [
+        'numero_unico',
+    ];
 
-	protected $guarded = [
-		'numero_unico'
-	];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = [];
+    /**
+     * Relaciones.
+     */
+    public function movimientos()
+    {
+        return $this->hasMany('App\Movimiento');
+    }
 
-	/**
-	 * Relaciones
-	 */
-	public function movimientos(){
-		return $this->hasMany('App\Movimiento');
-	}
-
-	/**
-	 * Validador
-	 */
-	private $errors;
-	private $rules = [
-		'saldo_actual' => 'requred|numeric',
-		'estado' => 'required|in:activo,suspendido,mora,cancelado',
-		'numero_unico' => 'required'
-	];
-	private $messages = [];
+    /**
+     * Validador.
+     */
+    private $errors;
+    private $rules = [
+        'saldo_actual' => 'requred|numeric',
+        'estado' => 'required|in:activo,suspendido,mora,cancelado',
+        'numero_unico' => 'required',
+    ];
+    private $messages = [];
 
     public function validate($data)
     {
@@ -76,10 +79,10 @@ class Cuenta extends \Moloquent {
         $v = \Validator::make($data, $this->rules, $this->messages);
 
         // check for failure
-        if ($v->fails())
-        {
+        if ($v->fails()) {
             // set errors and return false
             $this->errors = $v->errors();
+
             return false;
         }
 
@@ -87,22 +90,22 @@ class Cuenta extends \Moloquent {
         return true;
     }
 
-    public function errors()	
+    public function errors()
     {
         return $this->errors;
     }
 
     /**
-     * funciones de negocio
+     * funciones de negocio.
      */
-    public function crearNumeroUnico(){
-    	$numero_unico = str_random(10);
-    	$busqueda = $this->where('numero_unico', '=', $numero_unico)-first();
-    	if (!is_null($busqueda)) {
-    		return $numero_unico;
-    	}else{
-    		$this->crearNumeroUnico();
-    	}
+    public function crearNumeroUnico()
+    {
+        $numero_unico = str_random(10);
+        $busqueda = $this->where('numero_unico', '=', $numero_unico) - first();
+        if (!is_null($busqueda)) {
+            return $numero_unico;
+        } else {
+            $this->crearNumeroUnico();
+        }
     }
-
 }

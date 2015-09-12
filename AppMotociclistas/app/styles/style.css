@@ -24,6 +24,19 @@ body, html{
 	height: 100%;
 }
 
+.leaflet-popup-content {
+	width:auto !important;
+}
+
+.action-sheet .action-sheet-group{
+	background-color: #022839 !important;
+}
+.action-sheet .action-sheet-group .action-sheet-title{
+	color:#fff;
+	font-weight:bold;
+	font-size:120%;
+}
+
 /**
  * Botones
  */
@@ -123,10 +136,10 @@ form{
  */
 .header-bar-shipper{
 	background-color: #022839 !important;
-	height: 60px;
-	color: #fff;
+	color: #fff !important;
 	background: none;
 	background-size: 0;
+	box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
 }
 	.header-bar-shipper a{
 		height: 69%;
@@ -137,6 +150,12 @@ form{
 		text-decoration: none;
 		display: inline-block;
 	}
+
+		.header-bar-shipper button,
+		.header-bar-shipper .title{
+			color: #fff !important;
+		}
+
 		.header-bar-shipper a img.btn_right{
 			margin-left: 47px;
 		}
@@ -253,7 +272,6 @@ form{
  * Home
  */
 #home{
-	margin-top: 59px;
 }
 
 	#home #mapa{
@@ -279,7 +297,7 @@ form{
 			height: 60px;
 		}
 
-		#home #mapa #mapa_zoom_slider{
+		#home #mapa .leaflet-control-container{
 			background-color: #022839;
 			border-color: transparent;
 			color: #efcb1e;
@@ -288,16 +306,6 @@ form{
 			border-radius: 6px;
   			bottom: 12px;
 		}
-
-			#home #mapa #mapa_zoom_slider div{
-				width: 39px;
-  		    	height: 42px;
-			}
-
-				#home #mapa #mapa_zoom_slider div span{
-					display: block;
-					margin-top: 8px;
-				}
 
 		#home #mapa .btn_estado.not_available{
 			background-color: #e96057;
@@ -311,9 +319,12 @@ form{
 			width: 52%;
 			left: 98px;
 			background-color: #022839;
-			padding: 5px 9px;
+			padding: 9px;
 			border-radius: 6px;
 			box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+			height: 45px;
+			font-size: 14px;
+			line-height: 15px;
 		}
 
 			#home #mapa .btn_estado span{
@@ -327,6 +338,21 @@ form{
 				vertical-align: middle;
 				float: right;
 			}
+
+		#home #mapa #opcionesMapa{
+			position: absolute;
+			z-index: 999999999;
+			bottom: 12px;
+			width: 23%;
+			left: 5px;
+			background-color: #022839;
+			padding: 8px;
+			border-radius: 6px;
+			box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+			height: 45px;
+			text-align: center;
+			font-size: 18px;
+		}
 /**
  * Historial de Pedidos
  */

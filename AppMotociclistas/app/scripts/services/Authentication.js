@@ -10,11 +10,11 @@ angular.module('shipper.services')
 		authObj.iniciarSesion = function(email, contrasena, API){
 			return new Promise(function(fulfill, reject){
 				//llamado a la API
-				API.LoginCorreo.save(
-					{correo: email, contrasena: contrasena, return: true},
+				API.Login().save(
+					{username: email, password: contrasena},
 					function(resultado){
 						if (resultado.success === true) {
-							fulfill(resultado.user);
+							fulfill(resultado.data);
 						}else{
 							reject('AuthService2');
 						}

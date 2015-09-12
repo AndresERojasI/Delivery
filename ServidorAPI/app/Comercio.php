@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace Shipper;
 
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 

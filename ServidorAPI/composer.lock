@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01bb04cf9769da13441fe43ddc9a15bd",
+    "hash": "5c6026b96e6fa11a641b51a6ba976f5e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -217,165 +217,6 @@
             "time": "2014-12-20 21:24:13"
         },
         {
-            "name": "guzzlehttp/guzzle",
-            "version": "5.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f3c8c22471cb55475105c14769644a49c3262b93"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f3c8c22471cb55475105c14769644a49c3262b93",
-                "reference": "f3c8c22471cb55475105c14769644a49c3262b93",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/ringphp": "^1.1",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
-                "psr/log": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2015-05-20 03:47:55"
-        },
-        {
-            "name": "guzzlehttp/ringphp",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/streams": "~3.0",
-                "php": ">=5.4.0",
-                "react/promise": "~2.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Ring\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-05-20 03:37:09"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "time": "2014-10-12 19:18:40"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -463,109 +304,6 @@
             "time": "2015-04-20 18:58:01"
         },
         {
-            "name": "jenssegers/mongodb",
-            "version": "v2.1.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jenssegers/laravel-mongodb.git",
-                "reference": "e2bc57c374845ed18ce55e4d8df4b676ae8bac73"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb/zipball/e2bc57c374845ed18ce55e4d8df4b676ae8bac73",
-                "reference": "e2bc57c374845ed18ce55e4d8df4b676ae8bac73",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/container": "^5.0",
-                "illuminate/database": "^5.0",
-                "illuminate/events": "^5.0",
-                "illuminate/support": "^5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "*",
-                "orchestra/testbench": "3.0.*",
-                "satooshi/php-coveralls": "*"
-            },
-            "suggest": {
-                "jenssegers/mongodb-sentry": "Add Sentry support to Laravel-MongoDB",
-                "jenssegers/mongodb-session": "Add MongoDB session support to Laravel-MongoDB"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Jenssegers\\Mongodb": "src/",
-                    "Jenssegers\\Eloquent": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jens Segers",
-                    "homepage": "http://jenssegers.be"
-                }
-            ],
-            "description": "A MongoDB based Eloquent model and Query builder for Laravel 4",
-            "keywords": [
-                "database",
-                "eloquent",
-                "laravel",
-                "model",
-                "mongo",
-                "mongodb"
-            ],
-            "time": "2015-05-25 09:32:48"
-        },
-        {
-            "name": "jenssegers/mongodb-session",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jenssegers/laravel-mongodb-session.git",
-                "reference": "45d9ec0032971221070a2021c17f4f5403f5f466"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/laravel-mongodb-session/zipball/45d9ec0032971221070a2021c17f4f5403f5f466",
-                "reference": "45d9ec0032971221070a2021c17f4f5403f5f466",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/session": "4.*|5.*",
-                "jenssegers/mongodb": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Jenssegers\\Mongodb\\Session": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jens Segers",
-                    "homepage": "http://jenssegers.be"
-                }
-            ],
-            "description": "A MongoDB session driver for Laravel 4",
-            "keywords": [
-                "driver",
-                "laravel",
-                "mongo",
-                "mongodb",
-                "session"
-            ],
-            "time": "2015-01-30 14:14:09"
-        },
-        {
             "name": "jeremeamia/SuperClosure",
             "version": "2.1.0",
             "source": {
@@ -607,7 +345,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
@@ -625,16 +363,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.9",
+            "version": "v5.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2f1e0b8d7c24bb783d3a8d4fe4120ef82e5da648"
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/2f1e0b8d7c24bb783d3a8d4fe4120ef82e5da648",
-                "reference": "2f1e0b8d7c24bb783d3a8d4fe4120ef82e5da648",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e34dcc0c57e0f560248aec5128161256ff8bf4e1",
+                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1",
                 "shasum": ""
             },
             "require": {
@@ -749,70 +487,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-08-05 12:51:18"
-        },
-        {
-            "name": "league/event",
-            "version": "2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/event.git",
-                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/event/zipball/e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
-                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
-                "phpspec/phpspec": "~2.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Event\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frenky.net"
-                }
-            ],
-            "description": "Event package",
-            "keywords": [
-                "emitter",
-                "event",
-                "listener"
-            ],
-            "time": "2015-05-21 12:24:47"
+            "time": "2015-09-04 12:46:14"
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040"
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c16222fdc02467eaa12cb6d6d0e65527741f6040",
-                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7323424a9d39c24e597ed3f2144419dfbb52e086",
+                "reference": "7323424a9d39c24e597ed3f2144419dfbb52e086",
                 "shasum": ""
             },
             "require": {
@@ -880,138 +568,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-28 20:41:58"
-        },
-        {
-            "name": "league/oauth2-server",
-            "version": "4.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "34a6b66b8ca4255f8334c5aaf5cb34d7c57cdde8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/34a6b66b8ca4255f8334c5aaf5cb34d7c57cdde8",
-                "reference": "34a6b66b8ca4255f8334c5aaf5cb34d7c57cdde8",
-                "shasum": ""
-            },
-            "require": {
-                "league/event": "~2.1",
-                "php": ">=5.4.0",
-                "symfony/http-foundation": "~2.4"
-            },
-            "replace": {
-                "league/oauth2server": "*",
-                "lncd/oauth2": "*"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "League\\OAuth2\\Server\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alex Bilbie",
-                    "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
-            "homepage": "http://oauth2.thephpleague.com/",
-            "keywords": [
-                "Authentication",
-                "api",
-                "auth",
-                "authorisation",
-                "authorization",
-                "oauth",
-                "oauth 2",
-                "oauth 2.0",
-                "oauth2",
-                "protect",
-                "resource",
-                "secure",
-                "server"
-            ],
-            "time": "2015-03-22 23:19:36"
-        },
-        {
-            "name": "lucadegasperi/oauth2-server-laravel",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lucadegasperi/oauth2-server-laravel.git",
-                "reference": "e12b5585fd78e9bb6c1df672891669d017411137"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lucadegasperi/oauth2-server-laravel/zipball/e12b5585fd78e9bb6c1df672891669d017411137",
-                "reference": "e12b5585fd78e9bb6c1df672891669d017411137",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "5.1.*",
-                "illuminate/console": "5.1.*",
-                "illuminate/contracts": "5.1.*",
-                "illuminate/database": "5.1.*",
-                "illuminate/http": "5.1.*",
-                "illuminate/support": "5.1.*",
-                "league/oauth2-server": "4.1.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "^1.0.1",
-                "mockery/mockery": "^0.9.4",
-                "orchestra/testbench": "3.1.*",
-                "phpspec/phpspec": "^2.2.1",
-                "phpunit/phpunit": "^4.7.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LucaDegasperi\\OAuth2Server\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Luca Degasperi",
-                    "email": "packages@lucadegasperi.com"
-                },
-                {
-                    "name": "Vincent Klaiber",
-                    "email": "hello@vinkla.com"
-                }
-            ],
-            "description": "An OAuth 2.0 bridge for Laravel and Lumen",
-            "keywords": [
-                "api",
-                "laravel",
-                "lumen",
-                "oauth",
-                "oauth2",
-                "server"
-            ],
-            "time": "2015-08-19 06:06:42"
+            "time": "2015-09-05 12:06:41"
         },
         {
             "name": "monolog/monolog",
@@ -1334,50 +891,6 @@
                 "shell"
             ],
             "time": "2015-07-16 15:26:57"
-        },
-        {
-            "name": "react/promise",
-            "version": "v2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/3b6fca09c7d56321057fa8867c8dbe1abf648627",
-                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com"
-                }
-            ],
-            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2015-07-03 13:48:55"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2136,56 +1649,6 @@
             "time": "2015-07-28 15:18:12"
         },
         {
-            "name": "vinelab/http",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Vinelab/http.git",
-                "reference": "620e8cbb7144d24cac3556d81a1cc2311c550880"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Vinelab/http/zipball/620e8cbb7144d24cac3556d81a1cc2311c550880",
-                "reference": "620e8cbb7144d24cac3556d81a1cc2311c550880",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Vinelab\\Http": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Abed Halawi",
-                    "email": "abed.halawi@vinelab.com"
-                }
-            ],
-            "description": "An http library developed for the laravel framework. aliases itself as HttpClient",
-            "keywords": [
-                "api",
-                "client",
-                "curl",
-                "http",
-                "json",
-                "laravel",
-                "xml"
-            ],
-            "time": "2015-07-23 15:17:52"
-        },
-        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -2230,73 +1693,6 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
-        },
-        {
-            "name": "zizaco/entrust",
-            "version": "dev-laravel-5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd",
-                "reference": "3a768eb52300ec4efe9d6a6685b9bf0db6a50ffd",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/database": "~5.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "~4.1",
-                "sami/sami": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/commands"
-                ],
-                "psr-4": {
-                    "Zizaco\\Entrust\\": "src/Entrust/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Elkins",
-                    "homepage": "http://andrewelkins.com"
-                },
-                {
-                    "name": "Zizaco Zizuini",
-                    "email": "zizaco@gmail.com"
-                },
-                {
-                    "name": "Ben Batschelet",
-                    "homepage": "http://github.com/bbatsche"
-                },
-                {
-                    "name": "Michele Angioni",
-                    "email": "michele.angioni@gmail.com"
-                }
-            ],
-            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
-            "keywords": [
-                "acl",
-                "auth",
-                "illuminate",
-                "laravel",
-                "permission",
-                "roles"
-            ],
-            "time": "2015-07-09 16:32:53"
         }
     ],
     "packages-dev": [
@@ -2353,6 +1749,168 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
+                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2015-05-29 06:29:14"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/b37020aa976fa52d3de9aa904aa2522dc518f79c",
+                "reference": "b37020aa976fa52d3de9aa904aa2522dc518f79c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ],
+                "files": [
+                    "hamcrest/Hamcrest.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "0.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/padraic/mockery.git",
+                "reference": "70bba85e4aabc9449626651f48b9018ede04f86b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/70bba85e4aabc9449626651f48b9018ede04f86b",
+                "reference": "70bba85e4aabc9449626651f48b9018ede04f86b",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~1.1",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "homepage": "http://github.com/padraic/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2015-04-02 19:54:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3366,13 +2924,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "zizaco/entrust": 20,
-        "vinelab/http": 20,
-        "lucadegasperi/oauth2-server-laravel": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.5.9"
+    },
     "platform-dev": []
 }

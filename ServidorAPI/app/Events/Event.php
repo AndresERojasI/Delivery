@@ -1,7 +1,8 @@
-<?php namespace App\Events;
+<?php
 
-abstract class Event {
+namespace Shipper\Events;
 
-	//
-
+abstract class Event
+{
+    //
 }
