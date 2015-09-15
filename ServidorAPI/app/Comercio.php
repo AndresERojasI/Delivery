@@ -59,17 +59,17 @@ class Comercio extends \Moloquent
      */
     public function menu()
     {
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('Shipper\Producto');
     }
 
     public function geoposicion()
     {
-        return $this->hasMany('App\Geoposicion');
+        return $this->hasMany('Shipper\Geoposicion');
     }
 
     public function sedes()
     {
-        return $this->hasMany('App\Comercio');
+        return $this->hasMany('Shipper\Comercio');
     }
 
     /**

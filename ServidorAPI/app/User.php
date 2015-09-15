@@ -78,27 +78,27 @@ class User extends \Moloquent implements AuthenticatableContract, CanResetPasswo
      */
     public function badges()
     {
-        return $this->hasMany('App\Badges');
+        return $this->hasMany('Shipper\Badges');
     }
 
     public function vehiculo()
     {
-        return $this->hasOne('App\Vehiculo');
+        return $this->hasOne('Shipper\Vehiculo');
     }
 
     public function configuracion()
     {
-        return $this->hasOne('App\Configuracion');
+        return $this->hasOne('Shipper\Configuracion');
     }
 
     public function geoposicion()
     {
-        return $this->hasOne('App\Geoposicion');
+        return $this->hasOne('Shipper\Geoposicion');
     }
 
     public function cuenta()
     {
-        return $this->hasOne('App\Cuenta');
+        return $this->hasOne('Shipper\Cuenta');
     }
 
     /**

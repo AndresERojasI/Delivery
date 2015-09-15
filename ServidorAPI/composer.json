@@ -1,5 +1,5 @@
 {
-    "name": "Shipper",
+    "name": "solido/shipper",
     "description": "Shipper",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
@@ -11,10 +11,8 @@
         "nesbot/carbon": "~1.14",
         "zizaco/entrust": "dev-laravel-5",
         "jenssegers/mongodb-session": "^1.1",
-        "vinelab/http": "dev-master",
-        "illuminate/support" : "5.*",
-        "guzzlehttp/guzzle": "~5.0",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*@dev"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*@dev",
+        "predis/predis": "1.1.*@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

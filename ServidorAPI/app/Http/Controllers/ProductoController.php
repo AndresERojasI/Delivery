@@ -6,7 +6,7 @@
  */
 namespace Shipper\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Shipper\Http\Controllers\Controller;
 
 class ProductoController extends Controller
 {

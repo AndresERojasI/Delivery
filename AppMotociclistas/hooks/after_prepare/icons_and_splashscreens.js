@@ -20,7 +20,7 @@ var Orchestrator = require('orchestrator');
 
 var BASES = {
   android: 'res',
-  ios: 'Arcgis/Resources'
+  ios: 'Temporal/Resources'
 };
 var RESOURCE_DIR = 'resources';
 

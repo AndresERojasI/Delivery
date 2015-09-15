@@ -14,7 +14,7 @@ class Geoposicion extends \Moloquent {
 	 * 
 	 * @var array[string]
 	 */
-	protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at', 'momento_captura'];
 
 	/**
 	 * The database table used by the model.
@@ -38,7 +38,8 @@ class Geoposicion extends \Moloquent {
 	 */
 	protected $fillable = [
 		'latitud',
-		'longitud'
+		'longitud',
+		'id_usuario'
 	];
 
 	/**

@@ -59,7 +59,7 @@ class Cuenta extends \Moloquent
      */
     public function movimientos()
     {
-        return $this->hasMany('App\Movimiento');
+        return $this->hasMany('Shipper\Movimiento');
     }
 
     /**

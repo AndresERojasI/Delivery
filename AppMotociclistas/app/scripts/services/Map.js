@@ -22,10 +22,9 @@ angular.module('shipper.services')
 						zoomControl: false,
 						tap: true,
 						closePopupOnClick: true,
-						attributionControl: false,
-						tap: false
+						attributionControl: false
 					});
-					
+
 					//agregamos el mapa base de Esri
 					try {
 				        BASE = L.tileLayerCordova('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -71,16 +70,16 @@ angular.module('shipper.services')
 						if (BASE.isOnline()) {
 							objServicio.guardarActual();
 						};
-						
+
 						fulfill(true);
 					},
 					function(err){
 						reject(err);
 					});
-					
-					
-				}catch(e){	
-					console.log('here2');				
+
+
+				}catch(e){
+					console.log('here2');
 					reject(e);
 				}
 			});
@@ -92,10 +91,10 @@ angular.module('shipper.services')
 					navigator.geolocation.getCurrentPosition(
 						function(position){
 							fulfill(position);
-						}, 
+						},
 						function(error){
 							reject(error);
-						}, 
+						},
 						{enableHighAccuracy: true}
 					);
 				}

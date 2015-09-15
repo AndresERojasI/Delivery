@@ -118,7 +118,6 @@ return [
          */
         'Illuminate\Foundation\Providers\ArtisanServiceProvider',
         'Illuminate\Auth\AuthServiceProvider',
-        'Illuminate\Bus\BusServiceProvider',
         'Illuminate\Cache\CacheServiceProvider',
         'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
         'Illuminate\Routing\ControllerServiceProvider',
@@ -147,15 +146,12 @@ return [
         'Jenssegers\Mongodb\Auth\PasswordResetServiceProvider',
         'Zizaco\Entrust\EntrustServiceProvider',
         'Jenssegers\Mongodb\Session\SessionServiceProvider',
-        'Vinelab\Http\HttpServiceProvider',
         'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
         'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
         /*
          * Application Service Providers...
          */
         'Shipper\Providers\AppServiceProvider',
-        'Shipper\Providers\BusServiceProvider',
-        'Shipper\Providers\ConfigServiceProvider',
         'Shipper\Providers\EventServiceProvider',
         'Shipper\Providers\RouteServiceProvider',
 
