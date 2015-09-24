@@ -6,7 +6,7 @@ use Shipper\Events\EventoCambioUbicacion;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ListenerCambioUbicacion
+class ListenerCambioUbicacion implements ShouldQueue
 {
     /**
      * Create the event listener.

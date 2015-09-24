@@ -16,6 +16,15 @@ class EventServiceProvider extends ServiceProvider
         'Shipper\Events\EventoCambioUbicacion' => [
             'Shipper\Listeners\ListenerCambioUbicacion',
         ],
+        'Shipper\Events\EventMensaje' => [
+            'Shipper\Listeners\MensajeListener',
+        ],
+        'Shipper\Events\EventDisponibilidadDelivery' => [
+            'Shipper\Listeners\DisponibilidadDeliveryListener',
+        ],
+        'Shipper\Events\EventDisponibilidadComercio' => [
+            'Shipper\Listeners\DisponibilidadComercioListener',
+        ],
     ];
 
     /**

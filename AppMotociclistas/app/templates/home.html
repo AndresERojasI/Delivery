@@ -1,10 +1,10 @@
 <ion-view view-title="Inicio">
   <ion-content id="home">
-	<div id="mapa">
-		<div id="opcionesMapa" ng-click="abrirOpcionesMapa()">
+	<div id="mapa" ng-class="{error: error_mapa}">
+		<div id="opcionesMapa" ng-click="abrirOpcionesMapa()" ng-hide="error_mapa">
 			<i class="icon ion-map"></i> Mapa
 		</div>
-		<div class="btn_estado" ng-class="{not_available: !estoyDisponible}">
+		<div class="btn_estado" ng-class="{not_available: !estoyDisponible}" ng-hide="error_mapa">
 			<span>
 				{{ msjDisponibilidad }}
 			</span>			
@@ -15,7 +15,7 @@
 				</div>
 			</label>
 		</div>
-		<div class="center_map" ng-click="centrarPosActual()"></div>
+		<div class="center_map" ng-click="centrarPosActual()" ng-hide="error_mapa"></div>
 	</div>
   </ion-content>
 </ion-view>

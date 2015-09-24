@@ -2,8 +2,8 @@
 
 namespace Shipper\Http\Controllers;
 
-use Shipper\User;
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -63,6 +63,30 @@ class AutenticacionController extends Controller
                 array(
                     'success' => false,
                     'data' => [],
+                )
+            );
+        }
+    }
+
+    /**
+     * Función de logout.
+     *
+     * @return [type] [description]
+     */
+    public function logout()
+    {
+        try {
+            Auth::logout();
+
+            return \Response::json(
+                array(
+                    'success' => true,
+                )
+            );
+        } catch (Exception $e) {
+            return \Response::json(
+                array(
+                    'success' => false,
                 )
             );
         }

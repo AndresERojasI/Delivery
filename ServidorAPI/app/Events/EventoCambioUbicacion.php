@@ -2,27 +2,28 @@
 
 namespace Shipper\Events;
 
-use Shipper\Events\Event;
+use Shipper\Modelos\User;
+use Shipper\Modelos\Geoposicion;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class EventoCambioUbicacion extends Event
+class EventoCambioUbicacion extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
     /**
-     * Bloque de atributos del Evento
+     * Bloque de atributos del Evento.
      */
-    public $posicion;
+    public $usuario;
+    public $geoposicion;
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
-    public function __construct(Shipper\Geoposicion $posicion)
+    public function __construct(User $usuario, Geoposicion $geoposicion)
     {
-        $this->posicion = $posicion;
+        $this->usuario = $usuario;
+        $this->geoposicion = $geoposicion;
     }
 
     /**
@@ -32,6 +33,8 @@ class EventoCambioUbicacion extends Event
      */
     public function broadcastOn()
     {
-        return [''];
+        return [
+            'geoposicion-motociclistas',
+        ];
     }
 }

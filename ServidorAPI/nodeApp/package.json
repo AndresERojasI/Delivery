@@ -1,0 +1,26 @@
+{
+  "name": "nodeApp",
+  "version": "1.0.0",
+  "description": "Node for shipper",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndresRojasIsaza/Delivery"
+  },
+  "keywords": [
+    "Shipper"
+  ],
+  "author": "Andres Rojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndresRojasIsaza/Delivery/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.3",
+    "socket.io": "~1.3.6",
+    "ioredis": "~1.8.0"
+  }
+}

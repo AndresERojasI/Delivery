@@ -13,10 +13,13 @@ angular.module('shipper.controllers')
 	    });
 
 		if (formulario.$valid === true) {
-			UsuarioModel.iniciarSesion(modelo).then(
+            UsuarioModel.iniciarSesion(modelo).then(
 				function(respuesta){
 					$ionicLoading.hide();
-					$location.path( "/sincronize" );
+					$location.path( "/app/home" );
+					if (!$scope.$$phase) {
+                        $scope.$apply();
+                    }
 				},
 				function(error){
 					console.log(error);

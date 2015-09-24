@@ -139,7 +139,7 @@ form{
 	color: #fff !important;
 	background: none;
 	background-size: 0;
-	box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 6px 0px rgba(0,0,0,0.75);
 }
 	.header-bar-shipper a{
 		height: 69%;
@@ -274,8 +274,15 @@ form{
 #home{
 }
 
+	#home #mapa.error{
+		background: url(../images/error-mapa.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: #EFEFEF;
+	}
 	#home #mapa{
 		height: 100%;
+		
 	}
 
 		#home #mapa .center_map{

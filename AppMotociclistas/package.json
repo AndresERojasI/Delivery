@@ -1,6 +1,6 @@
 {
-  "name": "Arcgis",
-  "version": "0.0.0",
+  "name": "Shipper",
+  "version": "2.0.1",
   "private": true,
   "dependencies": {},
   "devDependencies": {

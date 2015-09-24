@@ -5,7 +5,6 @@
  * a role & permission management solution for Laravel.
  *
  * @license MIT
- * @package Zizaco\Entrust
  */
 
 return [
@@ -19,7 +18,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'Shipper\Role',
+    'role' => 'Shipper\Modelos\Role',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +39,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'Shipper\Permission',
+    'permission' => 'Shipper\Modelos\Permission',
 
     /*
     |--------------------------------------------------------------------------

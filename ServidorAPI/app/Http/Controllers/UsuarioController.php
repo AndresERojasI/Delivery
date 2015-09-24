@@ -7,7 +7,6 @@
 namespace Shipper\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Shipper\Http\Controllers\Controller;
 
 class UsuarioController extends Controller
 {
@@ -19,13 +18,12 @@ class UsuarioController extends Controller
     public function listar(Request $request)
     {
         //modelo general
-        $userModel = new \Shipper\User();
+        $userModel = new \Shipper\Modelos\User();
 
         //limit y offset
         $offset = $request->input('offset', false);
         $limit = $request->input('limit', false);
         $total = $userModel->count();
-        
 
         //limit
         if ($limit && $offset) {
@@ -67,13 +65,12 @@ class UsuarioController extends Controller
         //verificamos si cumple los requisitos
         if (!is_null($campo) || !is_null($valor)) {
             //modelo general
-            $userModel = new \Shipper\User();
+            $userModel = new \Shipper\Modelos\User();
 
             //limit y offset
             $offset = $request->input('offset', false);
             $limit = $request->input('limit', false);
             $total = $userModel->count();
-            
 
             //limit
             if ($limit && $offset) {
@@ -115,10 +112,10 @@ class UsuarioController extends Controller
         $data = $request->all();
 
         if (isset($data['correo'])) {
-            $usuario = \Shipper\User::where('correo', '=', $data['correo'])->first();
+            $usuario = \Shipper\Modelos\User::where('correo', '=', $data['correo'])->first();
 
             if (is_null($usuario)) {
-                $usuario = new \Shipper\User();
+                $usuario = new \Shipper\Modelos\User();
 
                 if ($usuario->validate($data)) {
                     $usuario->contrasena = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 1).substr(str_shuffle('aBcEeFgHiJkLmNoPqRstUvWxYz0123456789'), 0, 8);
@@ -151,7 +148,7 @@ class UsuarioController extends Controller
     public function actualizar(Request $request, $id)
     {
         $data = $request->all();
-        $usuario = \Shipper\User::find($id);
+        $usuario = \Shipper\Modelos\User::find($id);
 
         if ($usuario->validate($data)) {
             $usuario->update($data);
@@ -171,7 +168,7 @@ class UsuarioController extends Controller
      */
     public function eliminar(Request $request, $id)
     {
-        $usuario = \Shipper\User::find($id);
+        $usuario = \Shipper\Modelos\User::find($id);
 
         if (!is_null($usuario)) {
             $usuario->delete();
@@ -190,7 +187,7 @@ class UsuarioController extends Controller
     public function listarDelivery(Request $request)
     {
         //modelo general
-        $userModel = new \Shipper\User();
+        $userModel = new \Shipper\Modelos\User();
 
         //limit y offset
         $offset = $request->input('offset', false);
@@ -232,5 +229,78 @@ class UsuarioController extends Controller
     public function listarDeliveryCercanos(Request $request)
     {
         //TODO: logica con Arcgis
+    }
+
+    /**
+     * [cambiarEstado description].
+     *
+     * @param Request $request [description]
+     * @param [type]  $id      [description]
+     *
+     * @return [type] [description]
+     */
+    public function cambiarEstado(Request $request, $id)
+    {
+        $usuario = \Shipper\Modelos\User::find($id);
+        if (!is_null($usuario)) {
+            $usuario->disponible = $request->input('estado', false);
+            $usuario->update();
+            try {
+                //if ($usuario->tipo_usuario === 'delivery') {
+                if ($usuario->tipo_usuario === 'Admin') {
+                    \Event::fire(new \Shipper\Events\EventDisponibilidadDelivery($usuario));
+                } elseif ($usuario->tipo_usuario === 'comercio') {
+                    \Event::fire(new \Shipper\Events\EventDisponibilidadComercio($usuario));
+                }
+            } catch (Exception $e) {
+                return \Response::json(array(
+                    'success' => false,
+                    'data' => $e,
+                ));
+            }
+
+            return \Response::json(array(
+                'success' => true,
+                'data' => [],
+            ));
+        } else {
+            return \Response::json(array(
+                'success' => false,
+                'data' => [],
+            ));
+        }
+    }
+
+    /**
+     * [cambiarGeoposicion description].
+     *
+     * @return [type] [description]
+     */
+    public function cambiarGeoposicion(Request $request, $id)
+    {
+        $usuario = \Shipper\Modelos\User::find($id);
+        $latitud = $request->input('latitud', false);
+        $longitud = $request->input('longitud', false);
+        if (!is_null($usuario) && $latitud && $longitud) {
+            $geoposicion = new \Shipper\Modelos\Geoposicion(array(
+                    'latitud' => $latitud,
+                    'longitud' => $longitud,
+            ));
+
+            $usuario->geoposicion()->save($geoposicion);
+            $usuario->update();
+
+            \Event::fire(new \Shipper\Events\EventoCambioUbicacion($usuario, $geoposicion));
+
+            return \Response::json(array(
+                'success' => true,
+                'data' => [],
+            ));
+        } else {
+            return \Response::json(array(
+                'success' => false,
+                'data' => [],
+            ));
+        }
     }
 }

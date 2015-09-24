@@ -1,32 +1,40 @@
 'use strict';
 angular.module('shipper.services')
 
-.provider('AuthService', [function () {
+.provider('AuthService', [
 
-	this.$get = [function() {
-		var authObj = {};
+    function() {
 
-		//Login
-		authObj.iniciarSesion = function(email, contrasena, API){
-			return new Promise(function(fulfill, reject){
-				//llamado a la API
-				API.Login().save(
-					{username: email, password: contrasena},
-					function(resultado){
-						if (resultado.success === true) {
-							fulfill(resultado.data);
-						}else{
-							reject('AuthService2');
-						}
-						
-					},
-					function(error){
-						reject(error);
-					}
-				);
-			});
-		}
+        this.$get = ['API',
+            function(API) {
+                var authObj = {};
 
-		return authObj;
-	}];
-}]);
+                //Login
+                authObj.iniciarSesion = function(email, contrasena) {
+                    return new Promise(function(fulfill, reject) {
+                        //llamado a la API
+                        API.Login().save({
+                                username: email,
+                                password: contrasena
+                            },
+                            function(resultado) {
+                                if (resultado.success === true) {
+                                	console.log(resultado.data);
+                                    fulfill(resultado.data);
+                                } else {
+                                    reject('AuthService2');
+                                }
+
+                            },
+                            function(error) {
+                                reject(error);
+                            }
+                        );
+                    });
+                }
+
+                return authObj;
+            }
+        ];
+    }
+]);
