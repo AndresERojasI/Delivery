@@ -2,12 +2,9 @@
 
 angular.module('shipper.controllers')
 
-.controller('InicioCtrl', ['$scope', '$location', '$ionicPopup', 'UsuarioModel', 'Database', 'API', 'AuthService', 'randomString',
-    function($scope, $location, $ionicPopup, UsuarioModel, Database, API, AuthService, randomString) {
-    	cordova.plugins.backgroundMode.onfailure = function(errorCode) {
-            alert('No ha sido posible iniciar el Servicio de Segundo Plano');
-        };
-
+.controller('InicioCtrl', ['$scope', '$ionicPopup', 'UsuarioModel', 'Database', 'API', 'AuthService', 'randomString', '$state',
+    function($scope,  $ionicPopup, UsuarioModel, Database, API, AuthService, randomString, $state) {
+    	
         $scope.mySlides = [
             'images/slide1.png',
             'images/slide2.png',
@@ -20,7 +17,7 @@ angular.module('shipper.controllers')
             function(resultado) {
                 UsuarioModel.isLogged(Database, checkString).then(
                     function(respuesta) {
-                        $location.path('/app/home');
+                        $state.go('app.home', {});
                         if (!$scope.$$phase) {
                             $scope.$apply();
                         }

@@ -49,42 +49,61 @@ angular.module('shipper', ['ionic', 'shipper.controllers', 'shipper.services', '
         templateUrl: 'templates/olvidoContrasena.html',
         controller: 'OlvidoContrasenaCtrl'
     })
-        .state('app', {
-            url: '/app',
-            abstract: true,
-            templateUrl: 'templates/menu.html',
-            controller: 'MenuCtrl'
+    .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'MenuCtrl'
+    })
+        //Home de la aplicación
+        .state('app.home', {
+            url: '/home',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/home.html',
+                    controller: 'HomeCtrl'
+                }
+            }
         })
-    //Home de la aplicación
-    .state('app.home', {
-        url: '/home',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/home.html',
-                controller: 'HomeCtrl'
+        //Perfil
+        .state('app.perfil', {
+            url: '/perfil',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/perfil.html',
+                    controller: 'PerfilCtrl'
+                }
             }
-        }
-    })
-    //Historial de Pedidos
-    .state('app.historialPedidos', {
-        url: '/historialPedidos',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/historialPedidos.html',
-                controller: 'HistorialPedidosCtrl'
+        })
+        //Historial de Pedidos
+        .state('app.historialPedidos', {
+            url: '/historialPedidos',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/historialPedidos.html',
+                    controller: 'HistorialPedidosCtrl'
+                }
             }
-        }
-    })
-    //Saldo disponible
-    .state('app.saldoDisponible', {
-        url: '/saldoDisponible',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/saldoDisponible.html',
-                controller: 'SaldoDisponibleCtrl'
+        })
+        //Saldo disponible
+        .state('app.saldoDisponible', {
+            url: '/saldoDisponible',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/saldoDisponible.html',
+                    controller: 'SaldoDisponibleCtrl'
+                }
             }
-        }
-    });
+        })
+        .state('app.gamification', {
+            url: '/gamification',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/gamification.html',
+                    controller: 'GamificationCtrl'
+                }
+            }
+        });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/inicio');
 });

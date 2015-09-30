@@ -44,7 +44,7 @@ angular.module('shipper.services')
                                             // these are specific to L.TileLayer.Cordova and mostly specify where to store the tiles on disk
                                             folder: 'cacheMapShipper',
                                             name: 'shipper',
-                                            debug: true
+                                            debug: false
                                         }, function() {
                                             //Evento online
                                             document.addEventListener("online", objServicio.conConexion, false);
@@ -55,7 +55,7 @@ angular.module('shipper.services')
                                         alert(e);
                                     }
                                     //L.tileLayer.provider('Esri.WorldStreetMap').addTo(mapa);
-                                    console.log('here');
+
                                     //Obtenemos la posición actual
                                     objServicio.obtenerPosicionActual().then(function(response) {
                                             centro = L.latLng({
@@ -80,20 +80,17 @@ angular.module('shipper.services')
 
                                             if (BASE.isOnline()) {
                                                 objServicio.guardarActual();
-                                            };
-
-                                            console.log('here2');
-
+                                            } else {
+                                                objServicio.sinConexion();
+                                            }
                                             fulfill(true);
                                         },
                                         function(err) {
-                                            console.log('problem here');
                                             reject(err);
                                         });
 
 
                                 } catch (e) {
-                                    console.log('here2');
                                     reject(e);
                                 }
                             },
@@ -116,8 +113,8 @@ angular.module('shipper.services')
                                 function(error) {
                                     reject(error);
                                 }, {
-                                    enableHighAccuracy: true,
-                                    timeout: 30000
+                                    timeout: 30000,
+                                    enableHighAccuracy: true
                                 }
                             );
                         }
@@ -163,7 +160,7 @@ angular.module('shipper.services')
                         // receives the number of tiles downloaded and the number of tiles total; caller can calculate a percentage, update progress bar, etc.
                         function(done, total) {
                             var percent = Math.round(100 * done / total);
-                            console.log('Se ha descargado: ' + done + " / " + total + " = " + percent + "%");
+
                         },
                         // 4th param: complete callback
                         // no parameters are given, but we know we're done!
@@ -171,7 +168,7 @@ angular.module('shipper.services')
                             // for this demo, on success we use another L.TileLayer.Cordova feature and show the disk usage
                             BASE.getDiskUsage(function(filecount, bytes) {
                                 var kilobytes = Math.round(bytes / 1024);
-                                console.log("Cache status" + "<br/>" + filecount + " files" + "<br/>" + kilobytes + " kB");
+
                             });
                         },
                         // 5th param: error callback
@@ -204,7 +201,7 @@ angular.module('shipper.services')
                         var lat = location.latitude;
                         var lng = location.longitude;
 
-                        console.log('transmitiendo');
+
                         centro = L.latLng({
                             lon: lng,
                             lat: lat
@@ -216,10 +213,10 @@ angular.module('shipper.services')
                                 longitud: lng
                             },
                             function(respuesta) {
-                                console.log(respuesta);
+
                             },
                             function(error) {
-                                console.log(error);
+
                             }
                         );
 
@@ -227,8 +224,8 @@ angular.module('shipper.services')
                     };
 
                     var failureFn = function(error) {
-                        console.log('BackgroundGeoLocation error');
-                        console.log(error);
+
+
                     }
 
                     // BackgroundGeoLocation is highly configurable.

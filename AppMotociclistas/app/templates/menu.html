@@ -5,27 +5,31 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <img src="images/logo.png" alt="" side="center" id="img_logo_top">
     </ion-nav-bar>
     <ion-nav-view name="menuContent" align-title="left"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" id="left_menu_blue">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menú Principal</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+        <ion-item menu-close href="#/app/home" nav-direction="forward">
+          <i class="icon ion-ios-home"></i>&nbsp;Inicio
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item menu-close href="#/app/perfil" nav-direction="back">
+          <i class="icon ion-person"></i>&nbsp;Perfil
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <ion-item menu-close href="#/app/historialPedidos" nav-direction="enter">
+          <i class="icon ion-ios-cart"></i>&nbsp;Historial de Pedidos
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+        <ion-item menu-close href="#/app/saldoDisponible" nav-direction="exit">
+          <i class="icon ion-cash"></i>&nbsp;Saldo Disponible
+        </ion-item>
+        <ion-item menu-close href="#/app/gamification" nav-direction="swap">
+          <i class="icon ion-android-star"></i>&nbsp;Puntaje y Medallas
         </ion-item>
       </ion-list>
     </ion-content>
