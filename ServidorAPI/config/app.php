@@ -147,6 +147,9 @@ return [
         Jenssegers\Mongodb\Session\SessionServiceProvider::class,
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+        GionniValeriana\laravelAdminlte\AdminlteServiceProvider::class,
+        SleepingOwl\Admin\AdminServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -208,6 +211,17 @@ return [
         'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\Authorizer',
         'Redis' => 'Illuminate\Support\Facades\Redis',
         'Modelos' => 'Shipper\Modelos',
+        'Adminlte' => GionniValeriana\laravelAdminlte\Adminlte::class,
+        'Admin' => SleepingOwl\Admin\Admin::class,
+        'AdminAuth' => SleepingOwl\AdminAuth\Facades\AdminAuth::class,
+        'AdminRouter' => SleepingOwl\Admin\Facades\AdminRouter::class,
+        'AssetManager' => SleepingOwl\Admin\AssetManager\AssetManager::class,
+        'Column' => SleepingOwl\Admin\Columns\Column::class,
+        'FormItem' => SleepingOwl\Admin\Models\Form\FormItem::class,
+        'ModelItem' => SleepingOwl\Admin\Models\ModelItem::class,
+
+        'Form' => Illuminate\Html\FormFacade::class,
+        'Html' => Illuminate\Html\HtmlFacade::class,
     ],
 
 ];

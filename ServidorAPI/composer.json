@@ -16,8 +16,10 @@
         "jenssegers/mongodb": "^2.2",
         "nesbot/carbon": "~1.14",
         "jenssegers/mongodb-session": "^1.1",
-        "lucadegasperi/oauth2-server-laravel": "dev-master", 
-        "predis/predis": "1.1.*@dev"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*", 
+        "predis/predis": "1.1.*@dev",
+        "gionnivaleriana/laravel-adminlte": "dev-master",
+        "sleeping-owl/admin": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

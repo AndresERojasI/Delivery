@@ -18,7 +18,7 @@ angular.module('shipper.controllers')
         });
         Map.init($scope.map).then(
             function(respuesta) {
-
+                console.log(respuesta);
                 Map.AgregarPopupUsuario('<div class="card" style="width:220px">' +
                     '<div class="item item-text-wrap">' +
                     'This is a basic Card which contains an item that has wrapping text.' +

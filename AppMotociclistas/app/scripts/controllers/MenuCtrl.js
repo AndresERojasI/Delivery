@@ -4,7 +4,6 @@ angular.module('shipper.controllers')
 
 .controller('MenuCtrl', ['$scope', '$ionicPopup', '$ionicPlatform', '$state', '$ionicHistory',
     function($scope, $ionicPopup, $ionicPlatform, $state, $ionicHistory) {
-
         var intento = 0;
         // Disable BACK button on home
         var deregister = $ionicPlatform.registerBackButtonAction(function(event) {
@@ -29,6 +28,7 @@ angular.module('shipper.controllers')
             }
         }, 100);
 
+        $scope.currentUrl = "#/app"+$state.current.url;
 
         document.addEventListener("offline", function() {
             $ionicPopup.alert({

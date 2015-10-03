@@ -16,19 +16,19 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/home" nav-direction="forward">
+        <ion-item menu-close href="#/app/home" ng-class="{currentUrl=='#/app/home'? 'menu_selected' : ''}">
           <i class="icon ion-ios-home"></i>&nbsp;Inicio
         </ion-item>
-        <ion-item menu-close href="#/app/perfil" nav-direction="back">
+        <ion-item menu-close href="#/app/perfil" ng-class="{currentUrl=='#/app/perfil'? 'menu_selected' : ''}">
           <i class="icon ion-person"></i>&nbsp;Perfil
         </ion-item>
-        <ion-item menu-close href="#/app/historialPedidos" nav-direction="enter">
+        <ion-item menu-close href="#/app/historialPedidos" ng-class="{currentUrl=='#/app/historialPedidos'? 'menu_selected' : ''}">
           <i class="icon ion-ios-cart"></i>&nbsp;Historial de Pedidos
         </ion-item>
-        <ion-item menu-close href="#/app/saldoDisponible" nav-direction="exit">
+        <ion-item menu-close href="#/app/saldoDisponible" ng-class="{currentUrl=='#/app/saldoDisponible'? 'menu_selected' : ''}">
           <i class="icon ion-cash"></i>&nbsp;Saldo Disponible
         </ion-item>
-        <ion-item menu-close href="#/app/gamification" nav-direction="swap">
+        <ion-item menu-close href="#/app/gamification" ng-class="{currentUrl=='#/app/gamification'? 'menu_selected' : ''}">
           <i class="icon ion-android-star"></i>&nbsp;Puntaje y Medallas
         </ion-item>
       </ion-list>

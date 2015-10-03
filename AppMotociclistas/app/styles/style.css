@@ -38,6 +38,10 @@ h6
     font-family: RobotoBold, Times, serif !important;
 }
 
+.leaflet-tile-container img {
+-webkit-backface-visibility: hidden;
+}
+
 .scroll
 {
     width: 100%;
@@ -583,6 +587,10 @@ div.dd_wrap div.dd_submit
     color: #fff;
     border-color: #134462;
     background-color: #022839 !important;
+}
+
+.menu_selected{
+    background-color: #054C6C !important;
 }
 
 #left_menu_blue .scroll-content .item i

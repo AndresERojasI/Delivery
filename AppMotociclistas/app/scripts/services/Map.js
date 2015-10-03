@@ -35,11 +35,13 @@ angular.module('shipper.services')
                                         attributionControl: false
                                     });
 
+
                                     //agregamos el mapa base de Esri
                                     try {
                                         BASE = L.tileLayerCordova('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                                             // these options are perfectly ordinary L.TileLayer options
                                             maxZoom: 19,
+                                            maxNativeZoom: 19,
                                             attribution: 'Esri &copy;',
                                             // these are specific to L.TileLayer.Cordova and mostly specify where to store the tiles on disk
                                             folder: 'cacheMapShipper',
@@ -56,38 +58,29 @@ angular.module('shipper.services')
                                     }
                                     //L.tileLayer.provider('Esri.WorldStreetMap').addTo(mapa);
 
-                                    //Obtenemos la posición actual
-                                    objServicio.obtenerPosicionActual().then(function(response) {
-                                            centro = L.latLng({
-                                                lon: response.coords.longitude,
-                                                lat: response.coords.latitude
-                                            });
-                                            //Centramos el mapa en la posición actual
-                                            mapa.setView(centro, 18);
-                                            //Creamos el icono marcador de la posición actual
-                                            var detallesIcono = L.icon({
-                                                iconUrl: 'images/map-pointer.png',
-                                                iconSize: [30, 40],
-                                                iconAnchor: [22, 30],
-                                                popupAnchor: [-3, -76],
-                                                shadowUrl: 'images/marker-shadow.png',
-                                                shadowSize: [43, 40],
-                                                shadowAnchor: [21, 28]
-                                            });
-                                            marcadorDelivery = L.marker(centro, {
-                                                icon: detallesIcono
-                                            }).addTo(mapa);
 
-                                            if (BASE.isOnline()) {
-                                                objServicio.guardarActual();
-                                            } else {
-                                                objServicio.sinConexion();
-                                            }
-                                            fulfill(true);
-                                        },
-                                        function(err) {
-                                            reject(err);
-                                        });
+                                    centro = L.latLng({
+                                        lon: position.coords.longitude,
+                                        lat: position.coords.latitude
+                                    });
+                                    //Centramos el mapa en la posición actual
+                                    mapa.setView(centro, 19);
+                                    //Creamos el icono marcador de la posición actual
+                                    var detallesIcono = L.icon({
+                                        iconUrl: 'images/map-pointer.png',
+                                        iconSize: [30, 40],
+                                        iconAnchor: [22, 30],
+                                        popupAnchor: [-3, -76],
+                                        shadowUrl: 'images/marker-shadow.png',
+                                        shadowSize: [43, 40],
+                                        shadowAnchor: [21, 28]
+                                    });
+                                    marcadorDelivery = L.marker(centro, {
+                                        icon: detallesIcono
+                                    }).addTo(mapa);
+
+                                    fulfill(true);
+
 
 
                                 } catch (e) {
@@ -113,7 +106,6 @@ angular.module('shipper.services')
                                 function(error) {
                                     reject(error);
                                 }, {
-                                    timeout: 30000,
                                     enableHighAccuracy: true
                                 }
                             );
@@ -130,7 +122,7 @@ angular.module('shipper.services')
                                     lat: posicion.coords.latitude
                                 });
                                 marcadorDelivery.setLatLng(centro);
-                                mapa.setView(centro, 18);
+                                mapa.setView(centro, 19);
                                 fulfill(true);
                             },
                             function(error) {
@@ -207,7 +199,7 @@ angular.module('shipper.services')
                             lat: lat
                         });
                         marcadorDelivery.setLatLng(centro);
-                        mapa.setView(centro, 18);
+                        mapa.setView(centro, 19);
                         API.Geoposicion(UsuarioModel.data._id).save({
                                 latitud: lat,
                                 longitud: lng
